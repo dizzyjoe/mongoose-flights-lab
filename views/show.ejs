@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Flight Details</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+
+    <h1>Flight Details</h1>
+
+
+    <h2>Flight Information</h2>
+    <ul>
+      <li><strong>Airline:</strong> <%= flight.airline %></li>
+      <li><strong>Airport:</strong> <%= flight.airport %></li>
+      <li><strong>Flight No.:</strong> <%= flight.flightNo %></li>
+      <li><strong>Departure Date/Time:</strong> <%= formatDate(flight.departs) %></li>
+    </ul>
+
+    
+    <h2>Destinations</h2>
+    <ul>
+      <% flight.destinations.forEach(destination => { %>
+        <li>
+          <strong>Airport:</strong> <%= destination.airport %><br>
+          <strong>Arrival Date/Time:</strong> <%= formatDate(destination.arrival) %><br>
+        </li>
+      <% }); %>
+    </ul>
+
+
+    <h2>Tickets</h2>
+    <ul>
+     <% tickets.forEach(ticket => { %>
+     <li>
+         Seat: <%= ticket.seat %>, Price: $<%= ticket.price %>
+        </li>
+     <% }); %>
+    </ul>
+
+<a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a>
+
+
+    <h2>Add a New Destination</h2>
+    <form action="/flights/<%= flight._id %>/destinations" method="POST">
+      <label for="airport">Airport:</label>
+      <select name="airport" id="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+       
+      </select><br>
+
+      <label for="arrival">Arrival Date/Time:</label>
+      <input type="datetime-local" name="arrival" id="arrival" required><br>
+
+      <button type="submit">Add Destination</button>
+    </form>
+
+    <script>
+     
+      function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+      }
+    </script>
+  </body>
+</html>

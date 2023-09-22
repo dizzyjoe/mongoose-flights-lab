@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Add Flight</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <h1>Add Flight</h1>
+
+    <form action="/flights" method="POST">
+      <label for="airline">Airline:</label>
+      <select name="airline" id="airline">
+        <option value="American">American</option>
+        <option value="Southwest">Southwest</option>
+        <option value="United">United</option>
+        
+      </select><br>
+
+      <label for="airport">Airport:</label>
+      <select name="airport" id="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+        
+      </select><br>
+
+      <label for="flightNo">Flight No.:</label>
+      <input type="number" name="flightNo" id="flightNo" min="10" max="9999" required><br>
+
+      <label for="departs">Departure Date/Time:</label>
+      <input type="datetime-local" name="departs" id="departs" required><br>
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

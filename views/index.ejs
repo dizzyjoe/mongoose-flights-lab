@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- views/index.ejs -->
+
+<html>
+  <head>
+    <title>All Flights</title>
+  </head>
+  <body>
+    <%- include('partials/navbar') %>
+    <h1>All Flights</h1>
+    
+    <ul>
+      <% flights.forEach(flight => { %>
+        <li>
+          <strong>Airline:</strong> <%= flight.airline %><br>
+          <strong>Airport:</strong> <%= flight.airport %><br>
+          <strong>Flight No.:</strong> <%= flight.flightNo %><br>
+          <a href="/flights/<%= flight._id %>">Detail</a>
+          <strong>Departure Date/Time:</strong> <%= formatDate(flight.departs) %><br>
+        </li>
+      <% }); %>
+    </ul>
+
+    <a href="/flights/new">Add New Flight</a>
+
+    <script>
+  
+      function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        return new Date(dateString).toLocaleDateString(undefined, options);
+      }
+    </script>
+  </body>
+</html>
