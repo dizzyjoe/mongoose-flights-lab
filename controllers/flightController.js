@@ -1,5 +1,5 @@
 const Flight = require('../models/flight');
-const Destination = require('../models/destination'); // Import the Destination model
+const Destination = require('../models/destination');
 
 module.exports = {
   index: async (req, res) => {
