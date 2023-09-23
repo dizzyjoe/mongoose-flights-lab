@@ -1,4 +1,3 @@
-
 const Ticket = require('../models/ticket');
 const Flight = require('../models/flight');
 
@@ -37,6 +36,4 @@ module.exports = {
       res.status(404).send('Flight not found');
     }
   },
-
-  
 };

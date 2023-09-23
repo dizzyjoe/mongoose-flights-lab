@@ -40,7 +40,6 @@ module.exports = {
     }
   },
 
-
   addDestination: async (req, res) => {
     try {
       const flight = await Flight.findById(req.params.id);
